@@ -1,0 +1,223 @@
+﻿/* RESET BASIC */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* BASIC BODY */
+body {
+  background-color: #121212;
+  color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NAVBAR */
+.navBar {
+  background-color: #1e1e1e;
+  width: 100%;
+  padding: 1rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid #2b2b2b;
+}
+
+.navBar__ul {
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+/* LIST ITEM */
+.navBar__ul__li {
+  font-weight: bold;
+  list-style: none;
+}
+
+  /* LIST ITEM:Hover */
+  .navBar__ul__li:hover {
+    color: #ccc;
+    cursor: pointer;
+  }
+
+/* NORMAL LINK */
+.navBar__link {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+  .navBar__link.active {
+    color: aqua;
+    background-color: #333;
+    letter-spacing: .3rem;
+    box-shadow: inset 0 -2px 0 #666;
+  }
+
+
+  /* HOVER LINK */
+  .navBar__link:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+/* Título */
+.title {
+  margin: 2rem 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+  .title:hover {
+    color: #ffffff;
+  }
+/* Main */
+.containerMain {
+  display: flex;
+  justify-content:center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #121212;
+}
+
+/* DATA LIST */
+.listProvincies {
+  flex: 0 0 15%;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 20px;
+}
+
+/* DATA LIST - BUTTONS */
+.btnProvincies {
+  background-color: #2e2e2e;
+  color: #f0f0f0;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+  .btnProvincies:hover {
+    background-color: #444;
+    transform: translateX(4px);
+  }
+
+/* LISTVIEW - SUCURSALES */
+.listStore {
+  /*border: 1px solid #ff0000;*/
+  flex: 0 0 75%;
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  justify-content: flex-start;
+  align-content: flex-start;
+  border-radius: 20px;
+}
+
+
+/* CARD SUCURSAL */
+.listStore__card {
+  /*border: 1px solid #ff0000;*/
+  width:25%;
+  box-sizing:border-box;
+  color: #fff;
+  text-align: center;
+  background-color: #2b2b2b;
+  padding: 1rem .5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+}
+.listStore__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+}
+
+/* CARD NAME*/
+.listStore__card__name {
+  /* border: 1px solid #ff0000;*/
+  background: #1a1a1a;
+  display: block;
+  overflow: hidden;
+  font-weight: bold;
+  letter-spacing: .2rem;
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  padding: .1rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+/* CARD IMG  */
+.listStore__card__img {
+  /*width: 75%;*/
+  max-width: 75%;
+  min-height: 50%;
+  border-radius: 10px;
+  margin-bottom: .5rem;
+  object-fit: cover;
+  /*align-self: flex-start;*/
+}
+
+/* CARD DESCRIPTION */
+.listStore__card__description {
+  /* border: 1px solid #ff0000;*/
+  color: #ccc;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
+/* PAGINATION */
+.pagination {
+  border-top: 1px solid #fff;
+  padding: .7rem 0;
+  text-align: center;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+/* BUTTONES  PAGINATION*/
+.pagination__btn {
+  background-color: #2e2e2e;
+  color: #f0f0f0;
+  border: 1px solid #444;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+  .pagination__btn:hover {
+    background-color: #444;
+    transform: scale(1.05);
+  }
