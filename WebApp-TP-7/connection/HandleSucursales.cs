@@ -10,19 +10,10 @@ namespace WebApp_TP_7.connection
   public class HandleSucursales
   {
     public HandleSucursales() { }
-    //public DataTable GetDataQuery(string table,string query)
-    //{
-    //  return GetDataTable(table, query); 
-    //}
+
     public DataTable GetDataTable(string nombreTabla, string querySql)
     {
-      /*
-      DataAccess dataAccess = new DataAccess();
-      DataSet dataSet = new DataSet();
-      SqlDataAdapter dataAdapter = dataAccess.GetAdapter(querySql);
-      dataAdapter.Fill(dataSet, nombreTabla);
-      return dataSet.Tables[nombreTabla];
-      */
+
       DataAccess dataAccess = new DataAccess();
       using (SqlDataAdapter adapter = dataAccess.GetAdapter(querySql))
       {
@@ -36,3 +27,15 @@ namespace WebApp_TP_7.connection
     }
   }
 }
+
+//public DataTable GetDataQuery(string table,string query)
+//{
+//  return GetDataTable(table, query); 
+//}
+/*
+DataAccess dataAccess = new DataAccess();
+DataSet dataSet = new DataSet();
+SqlDataAdapter dataAdapter = dataAccess.GetAdapter(querySql);
+dataAdapter.Fill(dataSet, nombreTabla);
+return dataSet.Tables[nombreTabla];
+*/

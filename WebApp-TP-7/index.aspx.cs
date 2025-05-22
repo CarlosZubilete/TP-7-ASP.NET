@@ -23,9 +23,11 @@ namespace WebApp_TP_7
         this.Load_DataList();
       }
     }
-    private void Load_ListView()
+    private void Load_ListView(string filterQuery = null)
     {
-      listViewSucursales.DataSource = sucursales.GetDataTable("Sucursal", queryListView);
+      // ?? -> operador funsión nula. 
+      string query = filterQuery ?? queryListView; 
+      listViewSucursales.DataSource = sucursales.GetDataTable("Sucursal", query);
       listViewSucursales.DataBind();
     }
     private void Load_DataList()
@@ -37,11 +39,28 @@ namespace WebApp_TP_7
     protected void btnProvincies_Command(object sender, CommandEventArgs e)
     {
       lblProvicie.Text = string.Empty;
+      string filterQuery = queryListView; 
+      string queryIdProvincie = "WHERE Id_ProvinciaSucursal  = ";
 
-      if(e.CommandName == "eventoLookupProvincies")
+      if (e.CommandName == "eventoLookupProvincies")
       {
-        lblProvicie.Text = e.CommandArgument.ToString();
+        queryIdProvincie += e.CommandArgument.ToString();
+        //lblProvicie.Text = e.CommandArgument.ToString();
+        filterQuery += queryIdProvincie; 
+        //lblProvicie.Text = filterQuery;
+        this.Load_ListView(filterQuery);
       }
+    }
+
+    protected void listViewSucursales_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+    {
+      DataPager pager = (DataPager)listViewSucursales.FindControl("DataPager1");
+      if (pager != null)
+      {
+        pager.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+      }
+
+      this.Load_ListView();
     }
   }
 }

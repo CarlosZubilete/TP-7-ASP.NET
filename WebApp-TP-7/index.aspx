@@ -42,11 +42,15 @@
         </asp:DataList>
         <asp:Label ID="lblProvicie" runat="server" Text=""></asp:Label>
       </div>
-
+      <%--<ItemTemplate>
+            <asp:Button runat="server" ID="btnProvincies"
+              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies" 
+              CommandName="eventoLookupProvincies" CommandArgument='<%# Eval("Id_Provincia") %>' OnCommand="btnProvincies_Command" />
+          </ItemTemplate>--%>
       <%-- LIST SUCURSALES --%>
       <div class="listStore">
         <%-- LIST VIEW --%>
-        <asp:ListView ID="listViewSucursales" runat="server" GroupItemCount="3" DataKeyNames="Id_Sucursal">
+        <asp:ListView ID="listViewSucursales" runat="server" GroupItemCount="3" DataKeyNames="Id_Sucursal" OnPagePropertiesChanging="listViewSucursales_PagePropertiesChanging">
           <EditItemTemplate>
             <td runat="server" style="" class="listStore__card">
               <asp:Label ID="lblNameSuc" runat="server" Text='<%# Eval("NombreSucursal") %>' CssClass="listStore__card__name" />
@@ -131,19 +135,21 @@
     </div>
   </form>
 
-  <%-- DATA SOURCE --%>
+  <%-- DATA SOURCE - SUCURSALES--%>
   <%--<asp:SqlDataSource ID="sqlSource_DBSucursales" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>"
     SelectCommand="SELECT 
 	    SUC.[Id_Sucursal], 
 	    SUC.[NombreSucursal], 
 	    SUC.[DescripcionSucursal], 
-	    SUC.[Id_HorarioSucursal], 
-	    SUC.[Id_ProvinciaSucursal], 
-	    SUC.[DireccionSucursal], 
-	    Pro.[DescripcionProvincia],
 	    SUC.[URL_Imagen_Sucursal] 
       FROM [Sucursal] Suc JOIN [Provincia] Pro 
       ON SUC.Id_ProvinciaSucursal = PRO.Id_Provincia"></asp:SqlDataSource>--%>
+  
+  <br />
+  
+  <%-- DATA SOURCE - PROVINCIAS --%>
+  <%--<asp:SqlDataSource ID="sqlSource_DBSucursales_Provincies" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>"
+    SelectCommand="SELECT Id_Provincia ,DescripcionProvincia FROM Provincia"></asp:SqlDataSource>--%>
 </body>
 </html>
 
