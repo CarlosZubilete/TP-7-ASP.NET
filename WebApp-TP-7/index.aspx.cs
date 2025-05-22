@@ -33,5 +33,15 @@ namespace WebApp_TP_7
       dataListProvincies.DataSource = sucursales.GetDataTable("Provicias", queryDataList);
       dataListProvincies.DataBind();
     }
+
+    protected void btnProvincies_Command(object sender, CommandEventArgs e)
+    {
+      lblProvicie.Text = string.Empty;
+
+      if(e.CommandName == "eventoLookupProvincies")
+      {
+        lblProvicie.Text = e.CommandArgument.ToString();
+      }
+    }
   }
 }

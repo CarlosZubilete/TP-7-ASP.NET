@@ -36,9 +36,11 @@
         <asp:DataList ID="dataListProvincies" runat="server" >
           <ItemTemplate>
             <asp:Button runat="server" ID="btnProvincies"
-              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies" />
+              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies" 
+              CommandName="eventoLookupProvincies" CommandArgument='<%# Eval("Id_Provincia") %>' OnCommand="btnProvincies_Command" />
           </ItemTemplate>
         </asp:DataList>
+        <asp:Label ID="lblProvicie" runat="server" Text=""></asp:Label>
       </div>
 
       <%-- LIST SUCURSALES --%>
