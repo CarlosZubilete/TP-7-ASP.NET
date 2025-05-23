@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebApp_TP_7.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebApp_TP_7.index" UnobtrusiveValidationMode="None"%>
 
 <!DOCTYPE html>
 
@@ -28,9 +28,21 @@
   <%-- TITLE --%>
   <h1 class="title">Listado de Sucursales </h1>
   <form id="form1" runat="server">
-    <%-- MAIN CONTAINER --%>
+    <%-- BUSCQUEDA DE SUCURSALES. --%>
+    <div class="lookupSucursales">
+      <span class="lookupSucursales__texto"> Nombre de Sucursal</span>
+      <asp:TextBox ID="txtSucursales" runat="server" CssClass="lookupSucursales__input"></asp:TextBox>
+      <asp:Button ID="btnSucursales" runat="server" Text="Buscar" CssClass="lookupSucursales__btn" OnClick="btnSucursales_Click"/>
+    <%-- VALIDADORES --%>
+      <asp:RegularExpressionValidator ID="regexOnlyCharacter" runat="server" ControlToValidate="txtSucursales" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>
+      <%--<asp:Label ID="lblShowError" runat="server" Text=""></asp:Label>--%>
+    </div>
+    <%-- MENSAJE DE BUSQUEDA --%>
+    <div>
+      <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+    </div>
+    <%-- MAIN CONTAINER - DATALIST - LISTVIEW --%>
     <div class="containerMain">
-
       <%-- LIST PROVINCIES SUCURSALES  --%>
       <div class="listProvincies">
         <asp:DataList ID="dataListProvincies" runat="server" >
@@ -40,13 +52,9 @@
               CommandName="eventoLookupProvincies" CommandArgument='<%# Eval("Id_Provincia") %>' OnCommand="btnProvincies_Command" />
           </ItemTemplate>
         </asp:DataList>
-        <asp:Label ID="lblProvicie" runat="server" Text=""></asp:Label>
+  
       </div>
-      <%--<ItemTemplate>
-            <asp:Button runat="server" ID="btnProvincies"
-              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies" 
-              CommandName="eventoLookupProvincies" CommandArgument='<%# Eval("Id_Provincia") %>' OnCommand="btnProvincies_Command" />
-          </ItemTemplate>--%>
+
       <%-- LIST SUCURSALES --%>
       <div class="listStore">
         <%-- LIST VIEW --%>

@@ -38,7 +38,7 @@ namespace WebApp_TP_7
 
     protected void btnProvincies_Command(object sender, CommandEventArgs e)
     {
-      lblProvicie.Text = string.Empty;
+
       string filterQuery = queryListView; 
       string queryIdProvincie = "WHERE Id_ProvinciaSucursal  = ";
 
@@ -61,6 +61,24 @@ namespace WebApp_TP_7
       }
 
       this.Load_ListView();
+    }
+
+    protected void btnSucursales_Click(object sender, EventArgs e)
+    {
+      string filterQuery = queryListView + "Where NombreSucursal Like " ;
+      string like; 
+      if (txtSucursales.Text.Trim().Length > 0)
+      {
+        like = txtSucursales.Text.ToString();
+        filterQuery += $"'%{like}%'";
+        lblMessage.Text = filterQuery; 
+        this.Load_ListView(filterQuery);
+      }
+      else
+      {
+        this.Load_ListView();
+        lblMessage.Text = string.Empty;
+      }
     }
   }
 }
