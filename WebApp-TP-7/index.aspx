@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebApp_TP_7.index" UnobtrusiveValidationMode="None"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="WebApp_TP_7.index" UnobtrusiveValidationMode="None" %>
 
 <!DOCTYPE html>
 
@@ -19,7 +19,7 @@
       </li>
       <%-- SELECCIONADOS --%>
       <li class="navBar__ul__li">
-        <asp:HyperLink ID="linkListSuc" runat="server" NavigateUrl="" CssClass="navBar__link">
+        <asp:HyperLink ID="linkListSuc" runat="server" NavigateUrl="~/selectedSucursales.aspx" CssClass="navBar__link">
          Seleccionadas
         </asp:HyperLink>
       </li>
@@ -30,10 +30,10 @@
   <form id="form1" runat="server">
     <%-- BUSCQUEDA DE SUCURSALES. --%>
     <div class="lookupSucursales">
-      <span class="lookupSucursales__texto"> Nombre de Sucursal</span>
+      <span class="lookupSucursales__texto">Nombre de Sucursal</span>
       <asp:TextBox ID="txtSucursales" runat="server" CssClass="lookupSucursales__input"></asp:TextBox>
-      <asp:Button ID="btnSucursales" runat="server" Text="Buscar" CssClass="lookupSucursales__btn" OnClick="btnSucursales_Click"/>
-    <%-- VALIDADORES --%>
+      <asp:Button ID="btnSucursales" runat="server" Text="Buscar" CssClass="lookupSucursales__btn" OnClick="btnSucursales_Click" />
+      <%-- VALIDADORES --%>
       <asp:RegularExpressionValidator ID="regexOnlyCharacter" runat="server" ControlToValidate="txtSucursales" ValidationExpression="^[a-zA-Z\s]+$"></asp:RegularExpressionValidator>
       <%--<asp:Label ID="lblShowError" runat="server" Text=""></asp:Label>--%>
     </div>
@@ -45,14 +45,14 @@
     <div class="containerMain">
       <%-- LIST PROVINCIES SUCURSALES  --%>
       <div class="listProvincies">
-        <asp:DataList ID="dataListProvincies" runat="server" >
+        <asp:DataList ID="dataListProvincies" runat="server">
           <ItemTemplate>
             <asp:Button runat="server" ID="btnProvincies"
-              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies" 
+              Text='<%# Eval("DescripcionProvincia") %>' CssClass="btnProvincies"
               CommandName="eventoLookupProvincies" CommandArgument='<%# Eval("Id_Provincia") %>' OnCommand="btnProvincies_Command" />
           </ItemTemplate>
         </asp:DataList>
-  
+
       </div>
 
       <%-- LIST SUCURSALES --%>
@@ -66,6 +66,11 @@
               <asp:ImageButton ID="imgSuc" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' CssClass="listStore__card__img" />
               <br />
               <asp:Label ID="lblDescriptionSuc" runat="server" Text='<%# Eval("DescripcionSucursal") %>' CssClass="listStore__card__description" />
+              <br />
+              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar"
+                CssClass="listStore__card__btn"
+                CommandArgument='<%# Eval("NombreSucursal") + "|"+ Eval("DescripcionSucursal") + "|"+ Eval("Id_Sucursal") %>' 
+                CommandName="enventoSelectProvincie" OnCommand="btnSelectSuc_Command"/>
             </td>
           </EditItemTemplate>
           <EmptyDataTemplate>
@@ -90,6 +95,11 @@
               <asp:ImageButton ID="imgSuc" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' CssClass="listStore__card__img" />
               <br />
               <asp:Label ID="lblDescriptionSuc" runat="server" Text='<%# Eval("DescripcionSucursal") %>' CssClass="listStore__card__description" />
+              <br />
+              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar"
+                CssClass="listStore__card__btn"
+                CommandArgument='<%# Eval("NombreSucursal") + "|"+ Eval("DescripcionSucursal") + "|"+ Eval("Id_Sucursal") %>' 
+                CommandName="enventoSelectProvincie" OnCommand="btnSelectSuc_Command"/>
             </td>
           </InsertItemTemplate>
           <ItemTemplate>
@@ -100,7 +110,10 @@
               <br />
               <asp:Label ID="lblDescriptionSuc" runat="server" Text='<%# Eval("DescripcionSucursal") %>' CssClass="listStore__card__description" />
               <br />
-              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar" CssClass="listStore__card__btn" />
+              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar"
+                CssClass="listStore__card__btn"
+                CommandArgument='<%# Eval("NombreSucursal") + "|"+ Eval("DescripcionSucursal") + "|"+ Eval("Id_Sucursal") %>' 
+                CommandName="enventoSelectProvincie" OnCommand="btnSelectSuc_Command"/>
             </td>
           </ItemTemplate>
           <LayoutTemplate>
@@ -138,6 +151,11 @@
               <asp:ImageButton ID="imgSuc" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' CssClass="listStore__card__img" />
               <br />
               <asp:Label ID="lblDescriptionSuc" runat="server" Text='<%# Eval("DescripcionSucursal") %>' CssClass="listStore__card__description" />
+              <br />
+              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar"
+                CssClass="listStore__card__btn"
+                CommandArgument='<%# Eval("NombreSucursal") + "|"+ Eval("DescripcionSucursal") + "|"+ Eval("Id_Sucursal") %>' 
+                CommandName="enventoSelectProvincie" OnCommand="btnSelectSuc_Command"/>
             </td>
           </SelectedItemTemplate>
         </asp:ListView>
@@ -154,9 +172,9 @@
 	    SUC.[URL_Imagen_Sucursal] 
       FROM [Sucursal] Suc JOIN [Provincia] Pro 
       ON SUC.Id_ProvinciaSucursal = PRO.Id_Provincia"></asp:SqlDataSource>--%>
-  
+
   <br />
-  
+
   <%-- DATA SOURCE - PROVINCIAS --%>
   <%--<asp:SqlDataSource ID="sqlSource_DBSucursales_Provincies" runat="server" ConnectionString="<%$ ConnectionStrings:BDSucursalesConnectionString %>"
     SelectCommand="SELECT Id_Provincia ,DescripcionProvincia FROM Provincia"></asp:SqlDataSource>--%>
