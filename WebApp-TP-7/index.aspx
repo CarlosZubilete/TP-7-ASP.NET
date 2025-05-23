@@ -99,6 +99,8 @@
               <asp:ImageButton ID="imgSuc" runat="server" ImageUrl='<%# Eval("URL_Imagen_Sucursal") %>' CssClass="listStore__card__img" />
               <br />
               <asp:Label ID="lblDescriptionSuc" runat="server" Text='<%# Eval("DescripcionSucursal") %>' CssClass="listStore__card__description" />
+              <br />
+              <asp:Button ID="btnSelectSuc" runat="server" Text="Seleccionar" CssClass="listStore__card__btn" />
             </td>
           </ItemTemplate>
           <LayoutTemplate>

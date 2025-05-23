@@ -267,13 +267,36 @@ body {
 
 /* CARD DESCRIPTION */
 .listStore__card__description {
-  /* border: 1px solid #ff0000;*/
+  /*border: 1px solid #ff0000;*/
+  display:block;
   color: #ccc;
   font-family: Arial, sans-serif;
   font-size: 0.9rem;
+  padding:.5rem;
   text-align: left;
   width: 100%;
 }
+
+.listStore__card__btn {
+  /*border: 1px solid #ff0000;*/
+  /*width:100%;*/
+  border: .5px solid #1a1a1a;
+  padding: 0.6rem;
+  /*background-color: #00aaff;*/
+  background-color: #fff;
+  color: #00aaff;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+  .listStore__card__btn:hover {
+    background-color: #1a1a1a;
+    transform: scale(1.01);
+  }
 
 /* PAGINATION */
 .pagination {

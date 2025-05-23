@@ -82,3 +82,7 @@ namespace WebApp_TP_7
     }
   }
 }
+
+
+// TODO: THERE IS A PROBLEM WHEN I FILTERED , IT'S OK, but
+// TODO: when I was changging the page , the filter was not working
